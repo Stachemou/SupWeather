@@ -1,15 +1,15 @@
-import {CREATED} from 'http-status-code';
+import OK from 'http-status-code';
 
 /**
- * login
+ * register controller
  * @param {*} req
  * @param {*} res
  */
-async function registerController(req, res) {
-    console.log(req.body);
-    return res.status(CREATED).json({result: 'ok'});
+export async function registerController(req, res) {
+    try {
+        console.log(req.body);
+        return res.status(OK).json({result: 'ok'});
+    } catch (error) {
+        return error;
+    }
 }
-
-module.exports = {
-    registerController,
-};

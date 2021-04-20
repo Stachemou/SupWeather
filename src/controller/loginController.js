@@ -1,15 +1,15 @@
-import {OK} from 'http-status-code';
+import OK from 'http-status-code';
 
 /**
- * login
+ * login controller
  * @param {*} req
  * @param {*} res
  */
-async function loginController(req, res) {
-    console.log(req.body);
-    return res.status(OK).json({result: 'ok'});
+export async function loginController(req, res) {
+    try {
+        console.log(req.body);
+        return res.status(OK).json({result: 'ok'});
+    } catch (error) {
+        return error;
+    }
 }
-
-module.exports = {
-    loginController,
-};
