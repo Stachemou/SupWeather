@@ -1,14 +1,20 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
 
 import {homeRouter} from './routes/home.js';
 import {authRouter} from './routes/authentification.js';
+import {db} from './dbConfig.js';
 
 
 const app = express();
 
 const port = 3002;
+
+mongoose.connect(db.url, {useNewUrlParser: true, useUnifiedTopology: true})
+    .catch(console.error);
+
 
 app.use(cors());
 app.use(bodyParser.json());
