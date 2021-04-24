@@ -9,4 +9,3 @@ export const authRouter = new express.Router();
 authRouter.post('/login', loginController);
 
 authRouter.post('/register', registerController);
-

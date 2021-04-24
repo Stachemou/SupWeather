@@ -29,5 +29,5 @@ app.use('/authentification', authRouter);
 app.use('/home', homeRouter);
 
 app.listen(port, function() {
-  console.log('Le serveur fonctionne sur le port' + port);
+  console.log('Le serveur fonctionne sur le port ' + port);
 });
