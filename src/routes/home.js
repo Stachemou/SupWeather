@@ -1,8 +1,12 @@
 import express from 'express';
 
-import {cityController} from '../controller/cityController.js';
+import {postCityController, getCityController, getAllCityController} from '../controller/cityController.js';
 export const homeRouter = new express.Router();
 
 
-homeRouter.post('/', cityController);
+homeRouter.post('/', postCityController);
+
+homeRouter.get('/', getCityController);
+
+homeRouter.get('/all', getAllCityController);
 

@@ -19,6 +19,7 @@ class CityContainer extends React.Component {
 
     render(){
         return (
+          <div>
             <ul>
             {this.state.city ? (
             <div>
@@ -30,8 +31,12 @@ class CityContainer extends React.Component {
                 <div>
                     <li>PUTAIN DE SA RACE</li>
                     </div>)}
-
             </ul>
+            <form method="POST">
+              <input type="text" id="cityName" name="cityName" required size="10"/>
+              <input type="submit" value="PostCity"></input>
+            </form>
+            </div>
           )
     }
 }
