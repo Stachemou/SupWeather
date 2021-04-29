@@ -1,12 +1,20 @@
 import express from 'express';
 
-import {postCityController, getCityController, getAllCityController} from '../controller/cityController.js';
+import {
+    postCityController,
+    getCityController,
+    getAllCityController,
+    deleteCityController,
+} from '../controller/cityController.js';
+
 export const homeRouter = new express.Router();
 
 
-homeRouter.post('/', postCityController);
+homeRouter.post('/addcity', postCityController);
 
 homeRouter.get('/', getCityController);
 
 homeRouter.get('/all', getAllCityController);
+
+homeRouter.get('/delete', deleteCityController);
 

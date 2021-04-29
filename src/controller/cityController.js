@@ -1,10 +1,13 @@
 import {OK, BAD_REQUEST, INTERNAL_SERVER_ERROR, CREATED} from 'http-status-codes';
 
-import {getAllCities, createCity} from '../builder/cityBuilder.js';
+import {getAllCities, createCity, deleteCity} from '../builder/cityBuilder.js';
 import {check} from '../services/check.js';
 
+
+// GET
+
 /**
- * city controller
+ * get all city controller
  * @param {*} req
  * @param {*} res
  */
@@ -16,7 +19,7 @@ export async function getAllCityController(req, res) {
         res.status(BAD_REQUEST).send(err);
         return;
     }
-    await getAllCities(userId).then((val) => res.status(OK).json({...(val)}),
+    await getAllCities(userId).then((val) => res.status(OK).json(val),
     ).catch(
         (err) => {
             res.status(INTERNAL_SERVER_ERROR).send({'state': false, 'message': err.message});
@@ -25,34 +28,11 @@ export async function getAllCityController(req, res) {
 }
 
 /**
- * city controller
+ * get city controller
  * @param {*} req
  * @param {*} res
  */
- export async function postCityController(req, res) {
-    const checkParams = check(req, ['name']);
-    if (checkParams !== null) {
-        const err = {'state': false, 'message': 'bad request'};
-        console.error(err);
-        res.status(BAD_REQUEST).send(err);
-        return;
-    }
-    await createCity(req.body.name, req.body.temp, req.body.userid)
-    .then((val) => res.status(CREATED).json({...(val._doc)}),
-    ).catch(
-        (err) => {
-            res.status(INTERNAL_SERVER_ERROR).send({'state': false, 'message': err.message});
-        },
-    );
-}
-
-
-/**
- *
- * @param {*} req
- * @param {*} res
- */
-export async function getCityController(req, res) {
+ export async function getCityController(req, res) {
     const checkParams = check(req, []);
     if (checkParams !== null) {
         const err = {'state': false, 'message': 'bad request'};
@@ -68,3 +48,51 @@ export async function getCityController(req, res) {
         },
     );
 }
+
+// POST
+
+/**
+ * post city controller
+ * @param {*} req
+ * @param {*} res
+ */
+ export async function postCityController(req, res) {
+    const checkParams = check(req, ['name', 'userid']);
+    if (checkParams !== null) {
+        const err = {'state': false, 'message': 'bad request'};
+        console.error(err);
+        res.status(BAD_REQUEST).send(err);
+        return;
+    }
+    await createCity(req.body.name, req.body.userid)
+    .then((val) => res.status(CREATED).json(val._doc),
+    ).catch(
+        (err) => {
+            res.status(INTERNAL_SERVER_ERROR).send({'state': false, 'message': err.message});
+        },
+    );
+}
+
+// DELETE
+/**
+ * delete city controller
+ * @param {*} req
+ * @param {*} res
+ */
+export async function deleteCityController(req, res) {
+    const checkParams = check(req, ['']);
+    if (checkParams !== null) {
+        const err = {'state': false, 'message': 'bad request'};
+        console.error(err);
+        res.status(BAD_REQUEST).send(err);
+        return;
+    }
+    await deleteCity(req.body.id)
+    .then((val) => res.status(CREATED).json({...(val._doc)}),
+    ).catch(
+        (err) => {
+            res.status(INTERNAL_SERVER_ERROR).send({'state': false, 'message': err.message});
+        },
+    );
+}
+

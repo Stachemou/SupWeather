@@ -9,13 +9,19 @@ export async function getAllCities(id) {
 
 /**
  * @param {*} name
- * @param {*} temp
  * @param {*} userid
  */
- export async function createCity(name, temp, userid) {
+ export async function createCity(name, userid) {
     return new Cities({
         name: name,
-        temp: temp,
         userid: userid,
     }).save();
 }
+
+/**
+ * @param {*} id
+ */
+ export async function deleteCity(id) {
+    return Cities.deleteOne({_id: id}).exec();
+}
+

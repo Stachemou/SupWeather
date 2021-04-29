@@ -1,20 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './App.css';
-import { Route, Router } from "react-router";
-import CityContainer from './city';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
+import Home from './home';
 
 class App extends React.Component {
 
   render(){
     return(
       <Router>
-    <Route>
-      path={'/Home'}
-      render={(props) => 
-                    <CityContainer {...props} />
-            }
-    </Route>
+        <Switch>
+        <Route exact path='/home' component={Home}></Route>
+        </Switch>
     </Router>
     )
   }
