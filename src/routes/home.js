@@ -16,5 +16,5 @@ homeRouter.get('/', getCityController);
 
 homeRouter.get('/all', getAllCityController);
 
-homeRouter.get('/delete', deleteCityController);
+homeRouter.delete('/delete', deleteCityController);
 

@@ -19,9 +19,10 @@ export async function getAllCities(id) {
 }
 
 /**
- * @param {*} id
+ * @param {*} name
+ * @param {*} userid
  */
- export async function deleteCity(id) {
-    return Cities.deleteOne({_id: id}).exec();
+ export async function deleteCity(name, userid) {
+    return Cities.deleteOne({name: name, userid: userid}).exec();
 }
 

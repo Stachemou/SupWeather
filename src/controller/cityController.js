@@ -80,15 +80,16 @@ export async function getAllCityController(req, res) {
  * @param {*} res
  */
 export async function deleteCityController(req, res) {
-    const checkParams = check(req, ['']);
-    if (checkParams !== null) {
+    const userId = req.query.userid;
+    const name = req.query.name;
+    if (userId === undefined || name === undefined) {
         const err = {'state': false, 'message': 'bad request'};
         console.error(err);
         res.status(BAD_REQUEST).send(err);
         return;
     }
-    await deleteCity(req.body.id)
-    .then((val) => res.status(CREATED).json({...(val._doc)}),
+    await deleteCity(name, userId)
+    .then((val) => res.status(OK).json(val),
     ).catch(
         (err) => {
             res.status(INTERNAL_SERVER_ERROR).send({'state': false, 'message': err.message});

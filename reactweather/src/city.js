@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import CityInfo from './cityInfo';
 
+
 class CityContainer extends React.Component {
     state = {
         cities: [],
@@ -19,7 +20,7 @@ class CityContainer extends React.Component {
           <div>
             {this.state.cities.length > 0 ? (
               <div>{this.state.cities.map((city, i) => {
-                    return <CityInfo key= {i} name={city.name}/>
+                    return <CityInfo key= {i} name={city.name} userid={'test'}/>
                   })
                     }
 
