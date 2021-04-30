@@ -57,7 +57,6 @@ class CityContainer extends React.Component {
       return new Promise((resolve, reject) =>{
         const params = { q: name, appID: '936402657ed543414d5a08c36ba85176', units: 'metric' };
         axios.get('https://pro.openweathermap.org/data/2.5/weather', { params }).then((res) => {
-          console.log('l, xv');
             const city = res.data;
             resolve(city);
           }).catch( error => {

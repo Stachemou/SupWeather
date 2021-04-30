@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import { ReactComponent as DeleteIcon } from '../src/assets/x.svg';
+import{ ReactComponent as DetailIcon } from '../src/assets/arrow-right-square-fill.svg';
+import { Link } from 'react-router-dom';
+
 
 class CityInfo extends React.Component {
     state = {
@@ -29,6 +32,9 @@ class CityInfo extends React.Component {
                   <li>Température min : {this.state.city.main.temp_min}°C</li>
                   <li>Météo : {this.state.city.weather[0].main} : {this.state.city.weather[0].description}</li>
                 </ul>
+                <div onClick={this.handleClick}>
+                <Link to={{pathname: `/detail/${this.props.name}`}}><DetailIcon/></Link>
+                  </div>
             </div>):(
                 <div>
                 <li>No city</li>
@@ -50,7 +56,6 @@ class CityInfo extends React.Component {
 
     deleteCity= async ()=>{
       const params = { name: this.state.city.name, userid: this.props.userid };
-      console.log(params);
       axios.delete('http://localhost:3002/home/delete', { params }).then((res) => {
           this.setState({destroy: true})
         }).catch( error => {
