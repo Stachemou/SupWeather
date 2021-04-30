@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import './detail.css';
+
 
 class CityDetail extends React.Component {
     state = {
@@ -17,15 +19,43 @@ class CityDetail extends React.Component {
                 <h2>{this.props.match.params.cityName}</h2>
 
                 {this.state.info ? (
-                    <div>
+                    <div className='container'>
                         {this.state.info.list.map((day, i) => {
                             return (
-                                <div key={i}>
-                                    <p>Date : {
-                                    new Date(day.dt* 1000).toLocaleString("en-US", {weekday: "long", day: "numeric", month: "long"}) }</p>
-                                    <p>Température max :{day.temp.max}</p>
-                                    <p>Température min :{day.temp.min}</p>
-                                    <p>Weather :{day.weather[0].main}</p>
+                                <div key={i} className='forecastContainer'>
+                                    <h3>{
+                                        new Date(day.dt * 1000).toLocaleString("en-US", { weekday: "long", day: "numeric", month: "long" })}
+                                    </h3>
+                                    <div>
+                                        <p>{day.weather[0].main}</p>
+                                        <p>{day.weather[0].description}</p>
+                                    </div>
+                                    <div className='temp'>
+                                        <div className='blockInfo'>
+                                            <p><strong>Morning : </strong>{day.temp.morn.toFixed(0)} °C</p>
+                                            <p><strong>Day : </strong>{day.temp.day.toFixed(0)}°C</p>
+                                        </div>
+                                        <div className='blockInfo'>
+                                            <p><strong>Feels like : </strong>{day.feels_like.morn.toFixed(0)}°C</p>
+                                            <p><strong>Feels like: </strong>{day.feels_like.day.toFixed(0)}°C</p>
+                                        </div>
+                                    </div>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>Press: {day.pressure} hPA</td>
+                                                <td>Humidity: {day.humidity} %</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Wind: {(day.speed * 3.6).toFixed(1)} km/h</td>
+                                                <td>Orientation: {day.deg + 180}°</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sunrise: {new Date(day.sunrise * 1000).toLocaleString("en-US", { hour: "numeric", minute: "numeric" })}</td>
+                                                <td>Sunset: {new Date(day.sunset * 1000).toLocaleString("en-US", { hour: "numeric", minute: "numeric" })}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>                   
                                 </div>
                             )
                         })
