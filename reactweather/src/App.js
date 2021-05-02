@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -7,21 +7,26 @@ import {
 } from 'react-router-dom';
 import Home from './home';
 import CityDetail from './cityDetail';
+import Login from './login';
+import Register from './register';
 
-class App extends React.Component {
+function App() {
+  const [token, setToken] = useState();
 
-  render(){
+  if(!token) {
+    return <Login setToken={setToken} />
+  }
+
     return(
       <Router>
         <Switch>
-        <Route exact path='/home' component={Home}></Route>
-        <Route exact path='/detail/:cityName' component={CityDetail}></Route>
+        <Route exact path='/'><Login setToken={setToken}/></Route>
+        <Route exact path='/register'><Register/></Route>
+        <Route exact path='/home'><Home setToken={setToken}/></Route>
+        <Route exact path='/detail/:cityName'><CityDetail setToken={setToken}/></Route>
         </Switch>
     </Router>
     )
-  }
-
-  
 }
 
 export default App;

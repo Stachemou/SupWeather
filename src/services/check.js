@@ -1,3 +1,5 @@
+import {getUser} from '../builder/loginBuilder.js';
+
 // eslint-disable-next-line valid-jsdoc
 /**
  * check params
@@ -15,4 +17,15 @@ export function check(req, bodyExpect) {
         }
     });
     return retrn;
+}
+
+/**
+ * check user login
+ * @param {*} name
+ * @param {*} password
+ */
+export async function loginCheck(name, password) {
+    const user = await getUser(name, password);
+    console.log(user);
+    return user;
 }
