@@ -19,9 +19,10 @@ export default function Login({ setToken, setUser }) {
           name,
           password
         });
-        console.log(token.data.token);
-        setToken(token.data.token);
-        setUser(token.data.user);
+        if(token !== undefined){
+            setToken(token.data.token);
+            setUser(token.data.user);
+        }
       }
 
       

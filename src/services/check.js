@@ -29,3 +29,12 @@ export async function loginCheck(name, password) {
     console.log(user);
     return user;
 }
+
+
+/**
+ * @param {*} name
+ * @param {*} password
+ */
+ export async function userExist(name, password) {
+    console.log(await Users.findOne({name: name, password: password}).exec());
+}
