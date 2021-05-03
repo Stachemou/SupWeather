@@ -9,8 +9,7 @@ class CityContainer extends React.Component {
       }
 
     async componentDidMount() {
-      const user = 'test';
-      await this.loadAllCity(user);
+      await this.loadAllCity(this.props.user._id);
       //const yo = await this.getCity('Paris')
       //console.log('testsd', yo.name, yo.main.temp, yo.weather[0].main);
     }
@@ -20,7 +19,7 @@ class CityContainer extends React.Component {
           <div>
             {this.state.cities.length > 0 ? (
               <div>{this.state.cities.map((city, i) => {
-                    return <CityInfo key= {i} name={city.name} userid={'test'}/>
+                    return <CityInfo key= {i} name={city.name} userid={this.props.user._id}/>
                   })
                     }
 
@@ -41,7 +40,7 @@ class CityContainer extends React.Component {
       event.preventDefault();
       const info = await this.getCity(this.state.newCity);
       if(info){
-        const params = { name: info.name, temp: info.main.temp, userid: 'test' }; //info.weather[0].main
+        const params = { name: info.name, temp: info.main.temp, userid: this.props.user._id };
         axios.post('http://localhost:3002/home/addcity', params ).then((res) => {
             const city = res.data;
             const cities = this.state.cities;

@@ -8,7 +8,7 @@ async function loginUser(params){
       } );
 }
 
-export default function Login({ setToken }) {
+export default function Login({ setToken, setUser }) {
     const [name, setName] = useState();
     const [password, setPassword] = useState();
 
@@ -18,8 +18,9 @@ export default function Login({ setToken }) {
           name,
           password
         });
-        console.log(token);
-        setToken(token);
+        console.log(token.data.token);
+        setToken(token.data.token);
+        setUser(token.data.user);
       }
 
       

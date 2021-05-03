@@ -13,6 +13,7 @@ class CityDetail extends React.Component {
     }
 
     render() {
+        console.log(this);
         return (
             <div>
                 <h1>Preview</h1>
@@ -71,7 +72,6 @@ class CityDetail extends React.Component {
         axios.get('https://pro.openweathermap.org/data/2.5/forecast/daily', { params }).then((res) => {
             const infos = res.data;
             this.setState({ info: infos });
-            console.log(this.state.info);
         }).catch(error => {
             console.log(error);
         });

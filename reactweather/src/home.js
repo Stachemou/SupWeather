@@ -5,7 +5,7 @@ class Home extends React.Component {
 
   render(){
     return(
-      <CityContainer/>
+      <CityContainer user={this.props.user}/>
     )
   }
 }

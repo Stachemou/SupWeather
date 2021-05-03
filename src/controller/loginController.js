@@ -19,7 +19,7 @@ export async function loginController(req, res) {
     await loginCheck(req.body.name, req.body.password)
         .then((val) => {
             if (val) {
-                res.status(OK).send({token: 'test123'});
+                res.status(OK).send({token: 'test123', user: val});
             } else {
                 res.status(BAD_REQUEST).send({error: 'Error'});
             }
