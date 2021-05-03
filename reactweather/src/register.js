@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Register extends React.Component {
 
@@ -24,6 +26,7 @@ class Register extends React.Component {
                 <input type="password" />
             </label>
             <div>
+            <Link to={{pathname: `/`}}>Login</Link>
                 <button type="submit">Submit</button>
             </div>
         </form>

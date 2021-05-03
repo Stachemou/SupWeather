@@ -19,12 +19,18 @@ function App() {
   const { user, setUser } = useUser();
 
   if(!token) {
-    return <Login setToken={setToken} setUser={setUser} />
+    return (
+      <Router>
+        <Switch>
+        <Route exact path='/register'><Register/></Route>
+        <Route exact path='/'><Login setToken={setToken} setUser={setUser} /></Route>
+        </Switch>
+    </Router>
+        )
   }
     return(
       <Router>
         <Switch>
-        <Route exact path='/register'><Register/></Route>
         <Route exact path='/'>
           {token ? <Redirect to="/home" /> : <Redirect to="/" /> }
           </Route>
