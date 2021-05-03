@@ -10,8 +10,6 @@ class CityContainer extends React.Component {
 
     async componentDidMount() {
       await this.loadAllCity(this.props.user._id);
-      //const yo = await this.getCity('Paris')
-      //console.log('testsd', yo.name, yo.main.temp, yo.weather[0].main);
     }
 
     render(){
@@ -65,8 +63,8 @@ class CityContainer extends React.Component {
       })
     }
 
-    loadAllCity= async (user)=>{
-        const params = { userid: user };
+    loadAllCity= async (id)=>{
+        const params = { userid: id };
         axios.get('http://localhost:3002/home/all', { params }).then((res) => {
             const cities = res.data;
             this.setState({cities: cities});
