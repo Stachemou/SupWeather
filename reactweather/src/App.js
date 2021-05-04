@@ -15,12 +15,28 @@ import NavBar from './navBar';
 import useToken from './useToken';
 import useUser from './useUser';
 
+import React, { useState, useEffect } from "react";
+import {ThemeProvider} from "styled-components";
+import { GlobalStyles } from "./globalStyles";
+import { lightTheme, darkTheme } from "./theme";
+import  {useDarkMode} from "./useDarkMode"
+import Toggle from "./toggler"
+
 function App() {
   const { token, setToken } = useToken();
 
   const { user, setUser } = useUser();
 
+
+  const [theme, themeToggler] = useDarkMode();
+
+  const themeMode = theme === 'light' ? lightTheme : darkTheme
+
   return (
+    <ThemeProvider theme={themeMode}>
+    <>
+    <GlobalStyles/>
+    <Toggle theme={theme} toggleTheme={themeToggler} />
     <Router>
         <Switch>
           <Route exact path='/register'><Register /></Route>
@@ -31,6 +47,8 @@ function App() {
         <Route exact path='/detail/:cityName' component={CityDetail}></Route>
       </Switch>
     </Router>
+    </>
+    </ThemeProvider>
   )
 }
 
