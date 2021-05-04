@@ -20,32 +20,18 @@ function App() {
 
   const { user, setUser } = useUser();
 
-  if(!token) {
-    console.log(111111);
-    return (
-      <Router>
+  return (
+    <Router>
         <Switch>
-        <Route exact path='/register'><Register/></Route>
-        <Route exact path='/'><Redirect to="/login" />
-            </Route>
-        <Route exact path='/login'><Login setToken={setToken} setUser={setUser} /></Route>
-        </Switch>
+          <Route exact path='/register'><Register /></Route>
+          <Route exact path='/login'><Login setToken={setToken} setUser={setUser} /></Route>
+
+        <Route exact path='/logout'><LogOut /></Route>
+        <Route exact path='/'><NavBar user={user} /><Home user={user} token={token} /></Route>
+        <Route exact path='/detail/:cityName' component={CityDetail}></Route>
+      </Switch>
     </Router>
-        )
-  }
-    return(
-      <Router>
-      <NavBar user={user}/>
-        <Switch>
-        <Route exact path='/logout'><LogOut/></Route>
-          <Route exact path='/login'>
-            {token ? <Redirect to="/" /> : <Redirect to="/login" /> }
-            </Route>
-          <Route exact path='/'><Home user={user}/></Route>
-          <Route exact path='/detail/:cityName' component={CityDetail}></Route>
-        </Switch>
-    </Router>
-    )
+  )
 }
 
 export default App;

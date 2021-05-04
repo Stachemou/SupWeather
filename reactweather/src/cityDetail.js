@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './detail.css';
-
+import NavBar from './navBar';
 
 class CityDetail extends React.Component {
     state = {
@@ -16,6 +16,7 @@ class CityDetail extends React.Component {
         console.log(this);
         return (
             <div>
+                <NavBar user={this.props.location.state.user} />
                 <h1>Preview</h1>
                 <h2>{this.props.match.params.cityName}</h2>
 

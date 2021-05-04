@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 async function loginUser(params){
     return axios.post('http://localhost:3002/authentification/login', params ).catch( error => {
@@ -13,6 +13,8 @@ export default function Login({ setToken, setUser }) {
     const [name, setName] = useState();
     const [password, setPassword] = useState();
 
+    const [redirect, setRedirect] = useState(false);
+
     const handleSubmit = async e => {
         e.preventDefault();
         const token = await loginUser({
@@ -22,10 +24,13 @@ export default function Login({ setToken, setUser }) {
         if(token !== undefined){
             setToken(token.data.token);
             setUser(token.data.user);
+            setRedirect(true);
         }
       }
 
-      
+      if(redirect){
+          return <Redirect to={{pathname: '/'}}/>;
+      }
         return (
             <div>
                 <h1>Connection</h1>

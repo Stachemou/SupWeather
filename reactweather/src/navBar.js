@@ -1,6 +1,6 @@
 import React from 'react';
-import { Redirect } from 'react-router';
 import { ReactComponent as DisconnectIcon } from '../src/assets/power.svg';
+import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
     state = {
@@ -11,15 +11,12 @@ class NavBar extends React.Component {
         if(this.props.user === null){
             return null;
       }
-      if(!this.state.connect){
-        return <Redirect to={{pathname: '/logout'}}/>
-      }
         return (
             <div>
                 <h1>{this.props.user.name}</h1>
-                <button onClick={this.disconnect}>
-                    <DisconnectIcon/>
-                </button>
+                <Link to={{pathname: `/logout`}}>
+                <DisconnectIcon/>
+                </Link>
             </div>
 
         )
@@ -29,7 +26,6 @@ class NavBar extends React.Component {
         event.preventDefault();
         sessionStorage.removeItem('user');
         sessionStorage.removeItem('token');
-        this.setState({connect: false})
     }
 
 }

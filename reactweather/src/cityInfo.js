@@ -33,7 +33,7 @@ class CityInfo extends React.Component {
                   <li>Météo : {this.state.city.weather[0].main} : {this.state.city.weather[0].description}</li>
                 </ul>
                 <div onClick={this.handleClick}>
-                <Link to={{pathname: `/detail/${this.props.name}`}}><DetailIcon/></Link>
+                <Link to={{pathname: `/detail/${this.props.name}`, state: { user: this.props.user }}}><DetailIcon/></Link>
                   </div>
             </div>):(
                 <div>
