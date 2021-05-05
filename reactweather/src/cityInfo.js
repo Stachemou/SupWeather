@@ -55,7 +55,7 @@ class CityInfo extends React.Component {
     }
 
     deleteCity= async ()=>{
-      const params = { name: this.state.city.name, userid: this.props.userid };
+      const params = { name: this.state.city.name, userid: this.props.userid, _id: this.props._id };
       axios.delete('http://localhost:3002/home/delete', { params }).then((res) => {
           this.setState({destroy: true})
         }).catch( error => {

@@ -21,8 +21,9 @@ export async function getAllCities(id) {
 /**
  * @param {*} name
  * @param {*} userid
+ * @param {*} id
  */
- export async function deleteCity(name, userid) {
-    return Cities.deleteOne({name: name, userid: userid}).exec();
+ export async function deleteCity(name, userid, id) {
+    return Cities.deleteOne({name: name, userid: userid, _id: id}).exec();
 }
 

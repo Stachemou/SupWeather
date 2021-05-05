@@ -13,7 +13,6 @@ class CityDetail extends React.Component {
     }
 
     render() {
-        console.log(this);
         return (
             <div>
                 <NavBar user={this.props.location.state.user} />

@@ -17,7 +17,7 @@ class CityContainer extends React.Component {
           <div>
             {this.state.cities.length > 0 ? (
               <div>{this.state.cities.map((city, i) => {
-                    return <CityInfo key= {i} name={city.name} userid={this.props.user._id} user={this.props.user}/>
+                    return <CityInfo key= {i} name={city.name} userid={this.props.user._id} user={this.props.user} _id={city._id}/>
                   })
                     }
 

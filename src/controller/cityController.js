@@ -82,13 +82,14 @@ export async function getAllCityController(req, res) {
 export async function deleteCityController(req, res) {
     const userId = req.query.userid;
     const name = req.query.name;
-    if (userId === undefined || name === undefined) {
+    const id = req.query._id;
+    if (userId === undefined || name === undefined || id === undefined) {
         const err = {'state': false, 'message': 'bad request'};
         console.error(err);
         res.status(BAD_REQUEST).send(err);
         return;
     }
-    await deleteCity(name, userId)
+    await deleteCity(name, userId, id)
     .then((val) => res.status(OK).json(val),
     ).catch(
         (err) => {
