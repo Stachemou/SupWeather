@@ -43,7 +43,7 @@ function App() {
           <Route exact path='/login'><Login setToken={setToken} setUser={setUser} /></Route>
 
         <Route exact path='/logout'><LogOut /></Route>
-        <Route exact path='/'><NavBar user={user} /><Home user={user} token={token} /></Route>
+        <Route exact path='/'><NavBar user={user} /><Home user={user} token={token}/></Route>
         <Route exact path='/detail/:cityName' component={CityDetail}></Route>
       </Switch>
     </Router>

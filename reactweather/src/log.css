@@ -1,0 +1,16 @@
+.logContainer{
+    text-align: center;
+    margin: 0 auto;
+    width: 300px;
+    background-color: rgb(50, 170, 240);
+    border-radius: 5%;
+}
+
+.logInput{
+    text-align: left;
+    margin: 10% 10%;
+}
+
+.submitButton{
+    text-align: center;
+}

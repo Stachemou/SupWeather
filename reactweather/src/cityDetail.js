@@ -2,6 +2,19 @@ import React from 'react';
 import axios from 'axios';
 import './detail.css';
 import NavBar from './navBar';
+import { Link } from 'react-router-dom';
+
+import cloudy from './assets/cloudy_light.png';
+import snow from './assets/snow.png';
+import storm from './assets/storm.png';
+import mist from './assets/mist.png';
+import rain from './assets/rain.png';
+import showerRain from './assets/shower_rain.png';
+import brokenCloud from './assets/broken_cloud.png';
+
+import sunny from './assets/sunny.png'
+
+const assets = {'01d': sunny, '02d': cloudy, '03d': brokenCloud, '04d': brokenCloud, '09d': showerRain, '10d': rain, '11d': storm, '13d': snow, '50d': mist};
 
 class CityDetail extends React.Component {
     state = {
@@ -9,6 +22,7 @@ class CityDetail extends React.Component {
     }
 
     componentDidMount() {
+
         this.getCity(this.props.match.params.cityName);
     }
 
@@ -16,9 +30,9 @@ class CityDetail extends React.Component {
         return (
             <div>
                 <NavBar user={this.props.location.state.user} />
+                <Link to={{pathname: `/`}}>Back</Link>
                 <h1>Preview</h1>
                 <h2>{this.props.match.params.cityName}</h2>
-
                 {this.state.info ? (
                     <div className='container'>
                         {this.state.info.list.map((day, i) => {
@@ -28,6 +42,7 @@ class CityDetail extends React.Component {
                                         new Date(day.dt * 1000).toLocaleString("en-US", { weekday: "long", day: "numeric", month: "long" })}
                                     </h3>
                                     <div>
+                                    <img src={assets[day.weather[0].icon]} alt={day.weather[0].icon} width={'200px'}/>
                                         <p>{day.weather[0].main}</p>
                                         <p>{day.weather[0].description}</p>
                                     </div>

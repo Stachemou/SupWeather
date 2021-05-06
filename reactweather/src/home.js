@@ -11,7 +11,7 @@ class Home extends React.Component {
 
 
     return(
-      <CityContainer user={this.props.user}/>
+      <CityContainer user={this.props.user} theme={this.props.theme}/>
     )
   }
 }

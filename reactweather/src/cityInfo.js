@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ReactComponent as DeleteIcon } from '../src/assets/x.svg';
 import{ ReactComponent as DetailIcon } from '../src/assets/arrow-right-square-fill.svg';
 import { Link } from 'react-router-dom';
+import './info.css';
 
 
 class CityInfo extends React.Component {
@@ -19,14 +20,14 @@ class CityInfo extends React.Component {
             return null;
       }
         return (
-            <div>
+            <div className='card'>
             {this.state.city ? (
                 <div>
                   <div onClick={this.deleteCity}>
                     <DeleteIcon/>
                   </div>
                 <ul>
-                  <li>Ville : {this.state.city.name}</li>
+                  <h2>{this.state.city.name}</h2>
                   <li>Température : {this.state.city.main.temp}°C</li>
                   <li>Température max : {this.state.city.main.temp_max}°C</li>
                   <li>Température min : {this.state.city.main.temp_min}°C</li>

@@ -13,10 +13,13 @@ class NavBar extends React.Component {
       }
         return (
             <div>
-                <h1>{this.props.user.name}</h1>
+                <h1>Supweather</h1>
+                <span>{this.props.user.name}
                 <Link to={{pathname: `/logout`}}>
+                    Disconnect
                 <DisconnectIcon/>
                 </Link>
+                </span>
             </div>
 
         )

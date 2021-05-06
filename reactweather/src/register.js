@@ -1,32 +1,43 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './log.css';
 
 class Register extends React.Component {
 
   render(){
     return(
-        <div>
-        <h1>Register</h1>
+        <div className="logContainer">
+        <h1>Supweather</h1>
+        <h3>Register</h3>
         <form onSubmit={this.createAccount}>
-            <label>
-                <p>Username</p>
-                <input type="text" onChange={e => this.setState({username: e.target.value})}/>
-            </label>
-            <label>
-                <p>email</p>
-                <input type="text" onChange={e => this.setState({email: e.target.value})}/>
-            </label>
-            <label>
-                <p>Password</p>
-                <input type="password" onChange={e => this.setState({password: e.target.value})}/>
-            </label>
-            <label>
-                <p>Confirm password</p>
-                <input type="password" onChange={e => this.setState({confirmPassword: e.target.value})}/>
-            </label>
-            <div>
-            <Link to={{pathname: `/login`}}>Login</Link>
+            <div className="logInput">
+              <label>
+                  <span>Username</span><br/>
+                  <input type="text" onChange={e => this.setState({username: e.target.value})}/>
+              </label>
+            </div>
+            <div className="logInput">
+              <label>
+                  <span>Email address</span><br/>
+                  <input type="text" onChange={e => this.setState({email: e.target.value})}/>
+              </label>
+            </div>
+            <div className="logInput">
+              <label>
+                  <span>Password</span><br/>
+                  <input type="password" onChange={e => this.setState({password: e.target.value})}/>
+              </label>
+            </div>
+            <div className="logInput">
+              <label>
+                  <span>Confirm password</span><br/>
+                  <input type="password" onChange={e => this.setState({confirmPassword: e.target.value})}/>
+              </label>
+              <br/>
+              <Link to={{pathname: `/login`}}>Login</Link>
+            </div>
+            <div className="submitButton">
                 <button type="submit">Submit</button>
             </div>
         </form>

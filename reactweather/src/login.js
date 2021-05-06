@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
+import './log.css';
 
 async function loginUser(params){
     return axios.post('http://localhost:3002/authentification/login', params ).catch( error => {
@@ -32,19 +33,25 @@ export default function Login({ setToken, setUser }) {
           return <Redirect to={{pathname: '/'}}/>;
       }
         return (
-            <div>
-                <h1>Connection</h1>
+            <div className="logContainer">
+                <h1>Supweather</h1>
+                <h3>Connection</h3>
                 <form onSubmit={handleSubmit}>
-                    <label>
-                        <p>Username</p>
-                        <input type="text" onChange={e => setName(e.target.value)}/>
-                    </label>
-                    <label>
-                        <p>Password</p>
-                        <input type="password" onChange={e => setPassword(e.target.value)}/>
-                    </label>
-                    <Link to={{pathname: `/register`}}>Register</Link>
-                    <div>
+                    <div className="logInput">
+                        <label>
+                            <span>Username</span><br/>
+                            <input type="text" onChange={e => setName(e.target.value)}/>
+                        </label>
+                    </div>
+                    <div className="logInput">
+                        <label>
+                            <span>Password</span><br/>
+                            <input type="password" onChange={e => setPassword(e.target.value)}/>
+                        </label>
+                        <br/>
+                        <Link to={{pathname: `/register`}}>Register</Link>
+                    </div>
+                    <div className="submitButton">
                         <button type="submit">Submit</button>
                     </div>
                 </form>
