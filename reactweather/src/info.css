@@ -4,11 +4,21 @@
         justify-content: flex-start;
         align-items: flex-start;
         flex-wrap: wrap;
+        height: 50%;
 }
 
 .card{
         width: 18em;
         margin: 0.5% 0.5%;
         border-radius: 5%;
-        border: 2px black solid;
+        background-color: white;
+        color: black;
+}
+
+.infoList{
+        list-style: none;
+}
+
+.linkButton{
+        text-align: right;
 }

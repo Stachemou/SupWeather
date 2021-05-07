@@ -39,5 +39,5 @@ export async function loginCheck(name, password) {
  * @param {*} name
  */
  export async function userExist(name) {
-    return await Users.findOne({name: name}).exec();
+    return await getUser(name);
 }

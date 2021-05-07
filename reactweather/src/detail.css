@@ -1,8 +1,10 @@
 .forecastContainer {
+    background-color: white;
+    color:black;
     margin: 0 0.5%;
     border-radius: 5%;
-    border: 2px black solid;
     text-align: center;
+    box-shadow: 10px 5px 5px #00000036;
 }
 
 .container {

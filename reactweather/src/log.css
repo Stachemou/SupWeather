@@ -4,6 +4,8 @@
     width: 300px;
     background-color: rgb(50, 170, 240);
     border-radius: 5%;
+    height: 50%;
+    margin-top: 10%;
 }
 
 .logInput{

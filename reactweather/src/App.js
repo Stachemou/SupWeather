@@ -33,22 +33,24 @@ function App() {
   const themeMode = theme === 'light' ? lightTheme : darkTheme
 
   return (
-    <ThemeProvider theme={themeMode}>
-    <>
-    <GlobalStyles/>
-    <Toggle theme={theme} toggleTheme={themeToggler} />
-    <Router>
-        <Switch>
-          <Route exact path='/register'><Register /></Route>
-          <Route exact path='/login'><Login setToken={setToken} setUser={setUser} /></Route>
+    <div className={localStorage.getItem('theme')=== 'light'? 'App-body': 'App-body-dark'}>
+      <ThemeProvider theme={themeMode}>
+      <>
+      <GlobalStyles/>
+      <Toggle theme={theme} toggleTheme={themeToggler} />
+      <Router>
+          <Switch>
+            <Route exact path='/register'><Register /></Route>
+            <Route exact path='/login'><Login setToken={setToken} setUser={setUser} /></Route>
 
-        <Route exact path='/logout'><LogOut /></Route>
-        <Route exact path='/'><NavBar user={user} /><Home user={user} token={token}/></Route>
-        <Route exact path='/detail/:cityName' component={CityDetail}></Route>
-      </Switch>
-    </Router>
-    </>
-    </ThemeProvider>
+          <Route exact path='/logout'><LogOut /></Route>
+          <Route exact path='/'><NavBar user={user} /><Home user={user} token={token}/></Route>
+          <Route exact path='/detail/:cityName' component={CityDetail}></Route>
+        </Switch>
+      </Router>
+      </>
+      </ThemeProvider>
+    </div>
   )
 }
 

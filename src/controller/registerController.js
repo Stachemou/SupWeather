@@ -15,7 +15,7 @@ export async function registerController(req, res) {
         console.error(err);
         res.status(BAD_REQUEST).send(err);
         return;
-    } else if (userExist(req.body.name) !== null) {
+    } else if (await userExist(req.body.name) !== null) {
         const err = {'state': false, 'message': 'this name is already used'};
         console.error(err);
         res.status(BAD_REQUEST).send(err);

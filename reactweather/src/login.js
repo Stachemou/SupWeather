@@ -19,8 +19,8 @@ export default function Login({ setToken, setUser }) {
     const handleSubmit = async e => {
         e.preventDefault();
         const token = await loginUser({
-          name,
-          password
+            name,
+            password
         });
         if(token !== undefined){
             setToken(token.data.token);
@@ -40,7 +40,7 @@ export default function Login({ setToken, setUser }) {
                     <div className="logInput">
                         <label>
                             <span>Username</span><br/>
-                            <input type="text" onChange={e => setName(e.target.value)}/>
+                            <input type="text" onChange={e => setName(escapeHtml(e.target.value))}/>
                         </label>
                     </div>
                     <div className="logInput">
@@ -59,6 +59,18 @@ export default function Login({ setToken, setUser }) {
 
         )
 }
+
+function escapeHtml(text) {
+    var map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    };
+    
+    return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+  }
 
 Login.propTypes = {
     setToken: PropTypes.func.isRequired

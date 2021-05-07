@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import './log.css';
 import passwordHash from 'password-hash';
 
 class Register extends React.Component {
+
 
   render(){
     return(
@@ -15,13 +16,13 @@ class Register extends React.Component {
             <div className="logInput">
               <label>
                   <span>Username</span><br/>
-                  <input type="text" onChange={e => this.setState({username: e.target.value})}/>
+                  <input type="text" onChange={e => this.setState({username: this.escapeHtml(e.target.value)})}/>
               </label>
             </div>
             <div className="logInput">
               <label>
                   <span>Email address</span><br/>
-                  <input type="text" onChange={e => this.setState({email: e.target.value})}/>
+                  <input type="text" onChange={e => this.setState({email: this.escapeHtml(e.target.value)})}/>
               </label>
             </div>
             <div className="logInput">
@@ -60,6 +61,19 @@ class Register extends React.Component {
           });
     }
   }
+
+  escapeHtml(text) {
+    var map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    };
+    
+    return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+  }
+
 }
 
 export default Register;

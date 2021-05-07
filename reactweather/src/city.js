@@ -37,7 +37,8 @@ class CityContainer extends React.Component {
 
     addNewCity= async (event)=>{
       event.preventDefault();
-      const info = await this.getCity(this.state.newCity);
+      const city = this.escapeHtml(this.state.newCity);
+      const info = await this.getCity(city);
       if(info){
         const params = { name: info.name, temp: info.main.temp, userid: this.props.user._id };
         axios.post('http://localhost:3002/home/addcity', params ).then((res) => {
@@ -72,6 +73,18 @@ class CityContainer extends React.Component {
           }).catch(function (res) {
             console.log(res);
           });
+    }
+
+    escapeHtml(text) {
+      var map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      
+      return text.replace(/[&<>"']/g, function(m) { return map[m]; });
     }
 }
 

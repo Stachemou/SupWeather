@@ -43,17 +43,17 @@ class CityDetail extends React.Component {
                                     </h3>
                                     <div>
                                     <img src={assets[day.weather[0].icon]} alt={day.weather[0].icon} width={'200px'}/>
-                                        <p>{day.weather[0].main}</p>
-                                        <p>{day.weather[0].description}</p>
+                                    <br/>
+                                        <span>{day.weather[0].description}</span>
                                     </div>
                                     <div className='temp'>
                                         <div className='blockInfo'>
-                                            <p><strong>Morning : </strong>{day.temp.morn.toFixed(0)} °C</p>
-                                            <p><strong>Day : </strong>{day.temp.day.toFixed(0)}°C</p>
+                                            <p><strong>Morning : </strong>{day.temp.morn.toFixed(0)} &deg;C</p>
+                                            <p><strong>Day : </strong>{day.temp.day.toFixed(0)} &deg;C</p>
                                         </div>
                                         <div className='blockInfo'>
-                                            <p><strong>Feels like : </strong>{day.feels_like.morn.toFixed(0)}°C</p>
-                                            <p><strong>Feels like: </strong>{day.feels_like.day.toFixed(0)}°C</p>
+                                            <p><strong>Feels like : </strong>{day.feels_like.morn.toFixed(0)} &deg;C</p>
+                                            <p><strong>Feels like: </strong>{day.feels_like.day.toFixed(0)} &deg;C</p>
                                         </div>
                                     </div>
                                     <table>

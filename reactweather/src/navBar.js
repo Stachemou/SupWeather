@@ -1,6 +1,7 @@
 import React from 'react';
 import { ReactComponent as DisconnectIcon } from '../src/assets/power.svg';
 import { Link } from 'react-router-dom';
+import './navbar.css';
 
 class NavBar extends React.Component {
     state = {
@@ -12,14 +13,15 @@ class NavBar extends React.Component {
             return null;
       }
         return (
-            <div>
-                <h1>Supweather</h1>
-                <span>{this.props.user.name}
-                <Link to={{pathname: `/logout`}}>
-                    Disconnect
-                <DisconnectIcon/>
-                </Link>
-                </span>
+            <div className="bar">
+                <span id="title">Supweather</span>
+                <span>{this.props.user.name}</span>
+                    <button>
+                    <Link to={{pathname: `/logout`}}>
+                        Disconnect
+                    <DisconnectIcon/>
+                    </Link>
+                    </button>
             </div>
 
         )
