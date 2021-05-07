@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './log.css';
+import passwordHash from 'password-hash';
 
 class Register extends React.Component {
 
@@ -47,11 +48,11 @@ class Register extends React.Component {
 
   createAccount= async (event)=>{
     event.preventDefault();
-    console.log(this.state.password);
-    console.log(this.state.confirmPassword);
     if(this.state.password === this.state.confirmPassword){
-        const params = { name: this.state.username, email: this.state.email, password: this.state.password };
-        console.log(params);
+      const hash = passwordHash.generate(this.state.password);
+      console.log(hash);
+      console.log(passwordHash.verify(this.state.password, hash));
+        const params = { name: this.state.username, email: this.state.email, password: hash };
         axios.post('http://localhost:3002/authentification/register', params ).then((res) => {
             console.log(res);
           }).catch(function (res) {

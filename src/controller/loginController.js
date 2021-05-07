@@ -8,7 +8,6 @@ import {check, loginCheck} from '../services/check.js';
  * @param {*} res
  */
 export async function loginController(req, res) {
-    console.log(req.body);
     const checkParams = check(req, ['name', 'password']);
     if (checkParams !== null) {
         const err = {'state': false, 'message': 'bad request'};

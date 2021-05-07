@@ -1,4 +1,5 @@
 import {getUser} from '../builder/loginBuilder.js';
+import passwordHash from 'password-hash';
 
 // eslint-disable-next-line valid-jsdoc
 /**
@@ -25,16 +26,18 @@ export function check(req, bodyExpect) {
  * @param {*} password
  */
 export async function loginCheck(name, password) {
-    const user = await getUser(name, password);
-    console.log(user);
-    return user;
+    const user = await getUser(name);
+    if (passwordHash.verify(password, user.password)) {
+        return user;
+    } else {
+        return null;
+    }
 }
 
 
 /**
  * @param {*} name
- * @param {*} password
  */
- export async function userExist(name, password) {
-    console.log(await Users.findOne({name: name, password: password}).exec());
+ export async function userExist(name) {
+    return await Users.findOne({name: name}).exec();
 }
