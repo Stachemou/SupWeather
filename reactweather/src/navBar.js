@@ -15,7 +15,7 @@ class NavBar extends React.Component {
         return (
             <div className="bar">
                 <span id="title">Supweather</span>
-                <span>{this.props.user.name}</span>
+                <span id="username">{this.props.user.name}</span>
                     <button>
                     <Link to={{pathname: `/logout`}}>
                         Disconnect

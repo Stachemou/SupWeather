@@ -40,7 +40,7 @@ class Register extends React.Component {
               <Link to={{pathname: `/login`}}>Login</Link>
             </div>
             <div className="submitButton">
-                <button type="submit">Submit</button>
+                <button id="button" type="submit">Register</button>
             </div>
         </form>
     </div>

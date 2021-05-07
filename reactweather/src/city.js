@@ -27,9 +27,9 @@ class CityContainer extends React.Component {
                 <div>
                     <li>No city</li>
                     </div>)}
-            <form onSubmit={this.addNewCity}>
+            <form id="addCity" onSubmit={this.addNewCity}>
               <input onChange={e => this.setState({newCity: e.target.value})} type="text" id="cityName" name="cityName" required size="10"/>
-              <input type="submit" value="PostCity"></input>
+              <input type="submit" value="Add new city"></input>
             </form>
             </div>
           )

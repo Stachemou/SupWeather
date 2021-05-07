@@ -10,7 +10,6 @@ const Button = styled.button`
   position: fixed;
   font-size:0.8rem;
   padding: 0.6rem;
-  position: absolute;
   bottom: 15px;
   right: 15px;
 `;

@@ -52,7 +52,7 @@ export default function Login({ setToken, setUser }) {
                         <Link to={{pathname: `/register`}}>Register</Link>
                     </div>
                     <div className="submitButton">
-                        <button type="submit">Submit</button>
+                        <button id="button" type="submit">Login</button>
                     </div>
                 </form>
             </div>

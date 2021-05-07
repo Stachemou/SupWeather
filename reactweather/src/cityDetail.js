@@ -30,9 +30,9 @@ class CityDetail extends React.Component {
         return (
             <div>
                 <NavBar user={this.props.location.state.user} />
-                <Link to={{pathname: `/`}}>Back</Link>
-                <h1>Preview</h1>
-                <h2>{this.props.match.params.cityName}</h2>
+                <Link id="back" to={{pathname: `/`}}>	&lt; Back</Link>
+                <h1 className="title">Preview</h1>
+                <h2 className="title">{this.props.match.params.cityName}</h2>
                 {this.state.info ? (
                     <div className='container'>
                         {this.state.info.list.map((day, i) => {
@@ -52,11 +52,11 @@ class CityDetail extends React.Component {
                                             <p><strong>Day : </strong>{day.temp.day.toFixed(0)} &deg;C</p>
                                         </div>
                                         <div className='blockInfo'>
-                                            <p><strong>Feels like : </strong>{day.feels_like.morn.toFixed(0)} &deg;C</p>
-                                            <p><strong>Feels like: </strong>{day.feels_like.day.toFixed(0)} &deg;C</p>
+                                            <p><strong>Feels : </strong>{day.feels_like.morn.toFixed(0)} &deg;C</p>
+                                            <p><strong>Feels : </strong>{day.feels_like.day.toFixed(0)} &deg;C</p>
                                         </div>
                                     </div>
-                                    <table>
+                                    <div id="detail">
                                         <tbody>
                                             <tr>
                                                 <td>Press: {day.pressure} hPA</td>
@@ -64,14 +64,14 @@ class CityDetail extends React.Component {
                                             </tr>
                                             <tr>
                                                 <td>Wind: {(day.speed * 3.6).toFixed(1)} km/h</td>
-                                                <td>Orientation: {day.deg + 180}°</td>
+                                                <td>Orientation: {day.deg + 180}&deg;</td>
                                             </tr>
                                             <tr>
                                                 <td>Sunrise: {new Date(day.sunrise * 1000).toLocaleString("en-US", { hour: "numeric", minute: "numeric" })}</td>
                                                 <td>Sunset: {new Date(day.sunset * 1000).toLocaleString("en-US", { hour: "numeric", minute: "numeric" })}</td>
                                             </tr>
                                         </tbody>
-                                    </table>                   
+                                    </div>                   
                                 </div>
                             )
                         })

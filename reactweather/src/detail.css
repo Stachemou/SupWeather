@@ -5,10 +5,16 @@
     border-radius: 5%;
     text-align: center;
     box-shadow: 10px 5px 5px #00000036;
+    padding-bottom: 10px;
 }
 
 .container {
     display: flex;
+    margin: 0 auto;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .temp{
@@ -19,4 +25,17 @@
     width: 50%;
     display: inline-block;
     box-sizing: border-box;
+}
+
+#back{
+    text-decoration: none;
+    color: red;
+}
+
+#info{
+    display: flex;
+}
+
+.title{
+    text-align: center;
 }

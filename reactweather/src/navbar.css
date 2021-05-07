@@ -1,13 +1,25 @@
 .bar{
         color:black;
         background-color: white;
+        
 }
 
 .bar button a{
         text-decoration: none;
         font-size: 17px;
+        color: gray;
+}
+.bar button{
+        position: absolute;
+        right: 5px;
+        top: 5px;
 }
 
 #title{
         font-size: 32px;
+}
+
+#username{
+        right: 5px;
+        top: 5px;
 }

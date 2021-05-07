@@ -28,10 +28,10 @@ class CityInfo extends React.Component {
                   </div>
                 <ul className='infoList'>
                   <h2>{this.state.city.name}</h2>
-                  <li>Température : {this.state.city.main.temp}°C</li>
-                  <li>Température max : {this.state.city.main.temp_max}°C</li>
-                  <li>Température min : {this.state.city.main.temp_min}°C</li>
-                  <li>Météo : {this.state.city.weather[0].main} : {this.state.city.weather[0].description}</li>
+                  <li>Temperature : {this.state.city.main.temp}°C</li>
+                  <li>Temperature max : {this.state.city.main.temp_max}°C</li>
+                  <li>Temperature min : {this.state.city.main.temp_min}°C</li>
+                  <li>Weather : {this.state.city.weather[0].main} : {this.state.city.weather[0].description}</li>
                 </ul>
                 <div className='linkButton' onClick={this.handleClick}>
                 <Link to={{pathname: `/detail/${this.props.name}`, state: { user: this.props.user }}}><DetailIcon/></Link>
