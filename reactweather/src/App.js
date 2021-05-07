@@ -15,7 +15,7 @@ import NavBar from './navBar';
 import useToken from './useToken';
 import useUser from './useUser';
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {ThemeProvider} from "styled-components";
 import { GlobalStyles } from "./globalStyles";
 import { lightTheme, darkTheme } from "./theme";
